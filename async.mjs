@@ -11,7 +11,7 @@ async function resolve(i) {
 async function tryCatch(i) {
   try {
     return await createPromise(i);
-  } catch {}
+  } catch { }
 }
 
 async function waitAndGive(i) {
@@ -21,10 +21,10 @@ async function waitAndGive(i) {
 }
 
 async function promiseCatchStrict(i) {
-  return await createPromise(i).catch(() => {});
+  return await createPromise(i).catch(() => { });
 }
 async function promiseCatchLazy(i) {
-  return createPromise(i).catch(() => {});
+  return createPromise(i).catch(() => { });
 }
 
 function addOne(i) {
@@ -36,7 +36,7 @@ async function promiseThen(i) {
     .then(addOne)
     .then(waitAndGive)
     .then(addOne)
-    .catch(() => {});
+    .catch(() => { });
 }
 
 async function asyncNotThen(i) {
@@ -45,10 +45,10 @@ async function asyncNotThen(i) {
     const b = addOne(a);
     const c = await waitAndGive(b);
     return addOne(c);
-  } catch {}
+  } catch { }
 }
 
-const bench = new Bench({ time: 10000 });
+const bench = new Bench({ time: 1000 });
 
 const thousend = new Array(1000).fill(0).map((_, i) => i);
 
